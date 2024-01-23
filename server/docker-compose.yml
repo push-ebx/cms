@@ -3,14 +3,14 @@ services:
     container_name: postgres
     image: postgres
     environment:
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: admin
+      POSTGRES_USER: ${USER_DB}
+      POSTGRES_PASSWORD: ${PASSWORD_DB}
       PGDATA: /data/postgres
-      POSTGRES_DB: bank
+      POSTGRES_DB: ${NAME_DB}
     volumes:
       - db:/data/postgres
     ports:
-      - "5332:5432"
+      - "${PORT_DB}:5432"
     networks:
       - db
     restart: unless-stopped
