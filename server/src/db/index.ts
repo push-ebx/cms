@@ -12,6 +12,7 @@ const options: postgres.Options<{}> | undefined = {
   password: process.env.PASSWORD_DB
 };
 
+
 if (process.env.PORT_DB && isNumeric(process.env.PORT_DB)) {
   options.port = +process.env.PORT_DB;
 }

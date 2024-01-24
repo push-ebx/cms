@@ -44,10 +44,5 @@ import sql from './index';
     );
   `
 
-  const a = await sql`
-    SELECT * FROM Fields where false;
-  `
-  console.log(a);
-
   console.log('The database has been initialized!');
 })()

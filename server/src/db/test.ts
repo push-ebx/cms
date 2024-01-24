@@ -4,5 +4,6 @@ import sql from '../db';
   const users = await sql`
     select * from User;
   `
+
   console.log(users);
 })()
