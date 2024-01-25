@@ -1,6 +1,6 @@
 import postgres from 'postgres';
 import dotenv from "dotenv";
-import {isNumeric} from "../utils";
+import { isNumeric } from "../utils";
 
 dotenv.config();
 
@@ -11,7 +11,6 @@ const options: postgres.Options<{}> | undefined = {
   username: process.env.USER_DB,
   password: process.env.PASSWORD_DB
 };
-
 
 if (process.env.PORT_DB && isNumeric(process.env.PORT_DB)) {
   options.port = +process.env.PORT_DB;

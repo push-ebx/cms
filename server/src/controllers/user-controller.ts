@@ -9,7 +9,13 @@ class UserController {
 
   async createUser(req: Request, res: Response, next: NextFunction): Promise<Response | void> {
     try {
-      const user: any = {};
+      const user: User = {
+        user_id: 1,
+        username: 'admin',
+        password: '2h973fbuo',
+        email: 'admin@admin.com',
+        created_on: new Date()
+      };
 
       const new_user: User | null = await UserService.createUser(user);
 
