@@ -1,7 +1,7 @@
 import {User} from "../models";
 import sql from "../db";
 
-class UserService {
+class StructureService {
   async createUser(user: User): Promise<User | null> {
     try {
       const new_user = await sql`
@@ -16,4 +16,4 @@ class UserService {
   }
 }
 
-export = new UserService();
+export = new StructureService();

@@ -2,12 +2,12 @@ import {NextFunction, Request, Response} from "express";
 import UserService from "../service/user-service";
 import {User} from "../models";
 
-class UserController {
-  async getUser(req: Request, res: Response, next: NextFunction) {
+class EntityController {
+  async getEntity(req: Request, res: Response, next: NextFunction) {
 
   }
 
-  async createUser(req: Request, res: Response, next: NextFunction): Promise<Response | void> {
+  async createEntity(req: Request, res: Response, next: NextFunction): Promise<Response | void> {
     try {
       const user: User = {
         id: 1,
@@ -29,7 +29,7 @@ class UserController {
     }
   }
 
-  async getUser(req: Request, res: Response, next: NextFunction): Promise<Response | void> {
+  async getEntity(req: Request, res: Response, next: NextFunction): Promise<Response | void> {
     try {
 
       return res.send({status: 401, data: null, message: 'an error occurred when creating a user'});
@@ -38,7 +38,7 @@ class UserController {
     }
   }
 
-  async getUsers(req: Request, res: Response, next: NextFunction): Promise<Response | void> {
+  async getEntities(req: Request, res: Response, next: NextFunction): Promise<Response | void> {
     try {
 
       return res.send({status: 401, data: null, message: 'an error occurred when creating a user'});
@@ -47,7 +47,7 @@ class UserController {
     }
   }
 
-  async editUser(req: Request, res: Response, next: NextFunction): Promise<Response | void> {
+  async editEntity(req: Request, res: Response, next: NextFunction): Promise<Response | void> {
     try {
 
       return res.send({status: 401, data: null, message: 'an error occurred when creating a user'});
@@ -56,7 +56,7 @@ class UserController {
     }
   }
 
-  async deleteUser(req: Request, res: Response, next: NextFunction): Promise<Response | void> {
+  async deleteEntity(req: Request, res: Response, next: NextFunction): Promise<Response | void> {
     try {
 
       return res.send({status: 401, data: null, message: 'an error occurred when creating a user'});
@@ -66,4 +66,4 @@ class UserController {
   }
 }
 
-export = new UserController();
+export = new EntityController();
