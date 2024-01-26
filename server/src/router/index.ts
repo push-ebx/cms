@@ -3,10 +3,10 @@ import {UserController, StructuresController, EntityController, FieldController}
 
 const router = express.Router();
 
-router.get('/users', UserController.getUser);
+router.get('/users', UserController.getUsers);
 router.post('/users', UserController.createUser);
-router.get('/users/:id', UserController.getUsers);
-router.put('/users/:id', UserController.editUser);
+router.get('/users/:username', UserController.getUser);
+router.put('/users/:username', UserController.editUser);
 router.delete('/users/:id', UserController.deleteUser);
 
 router.get('/structures', StructuresController.getStructures);
@@ -15,15 +15,15 @@ router.get('/structures/:id', StructuresController.getStructure);
 router.put('/structures/:id', StructuresController.editStructure);
 router.delete('/structures/:id', StructuresController.deleteStructure);
 
-router.get('/entities', EntityController.getEntity);
+router.get('/entities', EntityController.getEntities);
 router.post('/entities', EntityController.createEntity);
-router.get('/entities/:id', EntityController.getEntities);
+router.get('/entities/:id', EntityController.getEntity);
 router.put('/entities/:id', EntityController.editEntity);
 router.delete('/entities/:id', EntityController.deleteEntity);
 
-router.get('/fields', FieldController.getField);
+router.get('/fields', FieldController.getFields);
 router.post('/fields', FieldController.createField);
-router.get('/fields/:id', FieldController.getFields);
+router.get('/fields/:id', FieldController.getField);
 router.put('/fields/:id', FieldController.editField);
 router.delete('/fields/:id', FieldController.deleteField);
 

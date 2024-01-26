@@ -1,9 +1,10 @@
+import { Request } from 'express';
+
 export interface User {
-  id: number;
-  username: string;
-  password: string;
-  email: string;
-  created_on: Date;
+  id?: number;
+  username?: string;
+  password?: string;
+  created_on?: Date;
 }
 
 export interface Structure {
@@ -32,3 +33,7 @@ export interface Field {
   date: Date;
   time: string;
 }
+
+export type RequestWithUser = Request<{}, {}, {}, { [key: string]: any } & {
+  user: User;
+}>
