@@ -5,13 +5,13 @@ const router = express.Router();
 
 router.get('/users', UserController.getUsers);
 router.post('/users', UserController.createUser);
-router.get('/users/:username', UserController.getUser);
+router.get('/user/:username', UserController.getUser);
 router.put('/users/:username', UserController.editUser);
 router.delete('/users/:id', UserController.deleteUser);
 
 router.get('/structures', StructuresController.getStructures);
 router.post('/structures', StructuresController.createStructure);
-router.get('/structures/:id', StructuresController.getStructure);
+router.get('/structure', StructuresController.getStructure);
 router.put('/structures/:id', StructuresController.editStructure);
 router.delete('/structures/:id', StructuresController.deleteStructure);
 

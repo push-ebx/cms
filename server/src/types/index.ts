@@ -8,20 +8,20 @@ export interface User {
 }
 
 export interface Structure {
-  id: number;
+  id?: number;
   user_id: number;
   title: string;
 }
 
 export interface Entity {
-  id: number;
+  id?: number;
   struct_id: number;
 }
 
 export type Types = 'integer' | 'double' | 'text' | 'long text' | 'logical' | 'media' | 'date' | 'time';
 
 export interface Field {
-  id: number;
+  id?: number;
   entity_id: string;
   type: Types;
   integer: number;
@@ -34,6 +34,6 @@ export interface Field {
   time: string;
 }
 
-export type RequestWithUser = Request<{}, {}, {}, { [key: string]: any } & {
+export type RequestWithUser = Request<{}, {}, {[key: string]: any}, { [key: string]: any } & {
   user: User;
 }>

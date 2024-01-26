@@ -4,13 +4,12 @@ import sql from "../db";
 class UserService {
   async createUser(user: User): Promise<User | Error> {
     if (!user.username)  throw new Error("the username field is not specified");
+
     const [res] = await sql`SELECT * from Users WHERE username = ${user.username}`;
 
     if (res) throw new Error("a user with the same username already exists");
 
-    const [{id}] = await sql`
-      INSERT INTO Users ${sql(user, 'username', 'password', 'created_on')} RETURNING id
-    `;
+    const [{id}] = await sql`INSERT INTO Users ${sql(user, 'username', 'password', 'created_on')} RETURNING id`;
 
     user.id = id;
     return user;

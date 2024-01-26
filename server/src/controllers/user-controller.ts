@@ -14,9 +14,9 @@ class UserController {
 
     try {
       const new_user: User | Error = await UserService.createUser(user);
-      return res.send({status: 200, data: new_user, message: 'the user has been successfully created'});
+      return res.status(201).json({data: new_user, message: 'the user has been successfully created'});
     } catch (e) {
-      return e instanceof Error ? res.send({status: 400, error: e.message}) : next(e);
+      return e instanceof Error ? res.status(400).json({error: e.message}) : next(e);
     }
   }
 
@@ -27,16 +27,16 @@ class UserController {
       const user: User | Error = await UserService.getUser(username);
       return res.send({status: 200, data: user, message: ''});
     } catch (e) {
-      return e instanceof Error ? res.send({status: 400, error: e.message}) : next(e);
+      return e instanceof Error ? res.status(400).json({error: e.message}) : next(e);
     }
   }
 
   async getUsers(req: Request, res: Response, next: NextFunction): Promise<Response | void> {
     try {
       const users: User[] | Error = await UserService.getUsers();
-      return res.send({status: 200, data: users, message: ''});
+      return res.status(200).json({data: users, message: ''});
     } catch (e) {
-      return e instanceof Error ? res.send({status: 400, error: e.message}) : next(e);
+      return e instanceof Error ? res.status(400).json({error: e.message}) : next(e);
     }
   }
 
@@ -52,17 +52,17 @@ class UserController {
       };
 
       const edit_user: User | Error = await UserService.editUser(req.params.username, user);
-      return res.send({status: 200, data: edit_user, message: ''});
+      return res.status(200).json({data: edit_user, message: ''});
     } catch (e) {
       console.log(e)
-      return e instanceof Error ? res.send({status: 400, error: e.message}) : next(e);
+      return e instanceof Error ? res.status(400).json({error: e.message}) : next(e);
     }
   }
 
   async deleteUser(req: Request, res: Response, next: NextFunction): Promise<Response | void> {
     try {
-
-      return res.send({status: 401, data: null, message: 'an error occurred when creating a user'});
+      //todo
+      return res.status(401).json({data: null, message: 'an error occurred when creating a user'});
     } catch (e) {
       return next(e);
     }
