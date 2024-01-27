@@ -1,48 +1,51 @@
 import {NextFunction, Request, Response} from "express";
 import UserService from "../service/user-service";
-import {User} from "../types";
+import {Entity, RequestWithUser, Structure, User} from "../types";
+import EntityService from "../service/entity-service";
+import StructureService from "../service/structure-service";
 
 class EntityController {
-  async getEntity(req: Request, res: Response, next: NextFunction) {
+  async createEntity(req: RequestWithUser, res: Response, next: NextFunction): Promise<Response | void> {
+    if (!req.query.user.id) return res.send({status: 400, error: "the user is not logged in"});
 
-  }
+    const entity: Entity = {
+      struct_id: req.body.struct_id
+    };
 
-  async createEntity(req: Request, res: Response, next: NextFunction): Promise<Response | void> {
     try {
-      const user: User = {
-        id: 1,
-        username: 'admin',
-        password: '2h973fbuo',
-        created_on: new Date()
-      };
+      const new_entity: Entity | Error = await EntityService.createEntity(entity);
 
-
-
-      return res.send({status: 401, data: null, message: 'an error occurred when creating a user'});
+      return res.status(201).json({data: new_entity, message: 'the entity has been successfully created'});
     } catch (e) {
-      return next(e);
+      return e instanceof Error ? res.status(400).json({error: e.message}) : next(e);
     }
   }
 
-  async getEntities(req: Request, res: Response, next: NextFunction): Promise<Response | void> {
-    try {
+  async getEntities(req: RequestWithUser, res: Response, next: NextFunction): Promise<Response | void> {
+    if (!req.query.user.id) return res.send({status: 400, error: "the user is not logged in"});
 
-      return res.send({status: 401, data: null, message: 'an error occurred when creating a user'});
+    try {
+      const entities: Entity[] | Error = await EntityService.getEntities();
+      return res.status(200).json({data: entities, message: ''});
     } catch (e) {
-      return next(e);
+      return e instanceof Error ? res.status(400).json({error: e.message}) : next(e);
     }
   }
 
-  async editEntity(req: Request, res: Response, next: NextFunction): Promise<Response | void> {
-    try {
+  async getEntity(req: RequestWithUser, res: Response, next: NextFunction): Promise<Response | void> {
+    if (!req.query.user.id) return res.send({status: 400, error: "the user is not logged in"});
 
-      return res.send({status: 401, data: null, message: 'an error occurred when creating a user'});
+    const {struct_id, id} = req.query;
+
+    try {
+      const entity: Entity | Error = await EntityService.getEntity(+struct_id, +id);
+      return res.send({status: 200, data: entity, message: ''});
     } catch (e) {
-      return next(e);
+      return e instanceof Error ? res.status(400).json({error: e.message}) : next(e);
     }
   }
 
-  async deleteEntity(req: Request, res: Response, next: NextFunction): Promise<Response | void> {
+  async deleteEntity(req: RequestWithUser, res: Response, next: NextFunction): Promise<Response | void> {
     try {
 
       return res.send({status: 401, data: null, message: 'an error occurred when creating a user'});

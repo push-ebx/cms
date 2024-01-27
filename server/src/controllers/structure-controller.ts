@@ -23,6 +23,7 @@ class StructureController {
   }
 
   async getStructure(req: RequestWithUser, res: Response, next: NextFunction): Promise<Response | void> {
+    if (!req.query.user.id) return res.send({status: 400, error: "the user is not logged in"});
     const {title, id} = req.query;
 
     try {
@@ -34,6 +35,8 @@ class StructureController {
   }
 
   async getStructures(req: RequestWithUser, res: Response, next: NextFunction): Promise<Response | void> {
+    if (!req.query.user.id) return res.send({status: 400, error: "the user is not logged in"});
+
     try {
       const structures: Structure[] | Error = await StructureService.getStructures();
       return res.status(200).json({data: structures, message: ''});
@@ -42,7 +45,7 @@ class StructureController {
     }
   }
 
-  async editStructure(req: Request, res: Response, next: NextFunction): Promise<Response | void> {
+  async editStructure(req: RequestWithUser, res: Response, next: NextFunction): Promise<Response | void> {
     try {
       // todo
       return res.send({status: 401, data: null, message: 'an error occurred when creating a user'});
@@ -51,7 +54,7 @@ class StructureController {
     }
   }
 
-  async deleteStructure(req: Request, res: Response, next: NextFunction): Promise<Response | void> {
+  async deleteStructure(req: RequestWithUser, res: Response, next: NextFunction): Promise<Response | void> {
     try {
       // todo
       return res.send({status: 401, data: null, message: 'an error occurred when creating a user'});

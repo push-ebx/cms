@@ -22,16 +22,16 @@ export type Types = 'integer' | 'double' | 'text' | 'long text' | 'logical' | 'm
 
 export interface Field {
   id?: number;
-  entity_id: string;
-  type: Types;
-  integer: number;
-  double: number;
-  text: string;
-  long_text: string;
-  logical: boolean;
-  media: string;
-  date: Date;
-  time: string;
+  entity_id?: string;
+  type?: Types | undefined;
+  integer?: number;
+  double?: number;
+  text?: string;
+  long_text?: string;
+  logical?: boolean;
+  media?: string;
+  date?: Date;
+  time?: string;
 }
 
 export type RequestWithUser = Request<{}, {}, {[key: string]: any}, { [key: string]: any } & {

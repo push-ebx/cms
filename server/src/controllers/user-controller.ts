@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import UserService from "../service/user-service";
-import { User } from "../types";
+import {RequestWithUser, User} from "../types";
 
 class UserController {
   async createUser(req: Request, res: Response, next: NextFunction): Promise<Response | void> {
@@ -40,10 +40,9 @@ class UserController {
     }
   }
 
-  async editUser(req: Request, res: Response, next: NextFunction): Promise<Response | void> {
+  async editUser(req: RequestWithUser, res: Response, next: NextFunction): Promise<Response | void> {
     try {
       const {username, password} = req.body;
-      console.log(req.params.username, username, password)
 
       const user: User = {
         username,
@@ -51,7 +50,7 @@ class UserController {
         created_on: new Date()
       };
 
-      const edit_user: User | Error = await UserService.editUser(req.params.username, user);
+      const edit_user: User | Error = await UserService.editUser(req.query.username, user);
       return res.status(200).json({data: edit_user, message: ''});
     } catch (e) {
       console.log(e)

@@ -1,21 +1,23 @@
 import {NextFunction, Request, Response} from "express";
-import UserService from "../service/user-service";
-import {User} from "../types";
+import {Entity, Field, RequestWithUser} from "../types";
+import FieldService from "../service/field-service";
+import EntityService from "../service/entity-service";
 
 class FieldController {
-  async createField(req: Request, res: Response, next: NextFunction): Promise<Response | void> {
+  async createField(req: RequestWithUser, res: Response, next: NextFunction): Promise<Response | void> {
+    if (!req.query.user.id) return res.send({status: 400, error: "the user is not logged in"});
+
+    const field: Field = {
+      entity_id: req.body.entity_id,
+      type: req.body.entity_id
+    };
+
     try {
-      const user: User = {
-        id: 1,
-        username: 'admin',
-        password: '2h973fbuo',
-        created_on: new Date()
-      };
+      const new_field: Field | Error = await FieldService.createField(field);
 
-
-      return res.send({status: 401, data: null, message: 'an error occurred when creating a user'});
+      return res.status(201).json({data: new_field, message: 'the field has been successfully created'});
     } catch (e) {
-      return next(e);
+      return e instanceof Error ? res.status(400).json({error: e.message}) : next(e);
     }
   }
 
@@ -28,19 +30,21 @@ class FieldController {
     }
   }
 
-  async getFields(req: Request, res: Response, next: NextFunction): Promise<Response | void> {
-    try {
+  async getFields(req: RequestWithUser, res: Response, next: NextFunction): Promise<Response | void> {
+    if (!req.query.user.id) return res.send({status: 400, error: "the user is not logged in"});
 
-      return res.send({status: 401, data: null, message: 'an error occurred when creating a user'});
+    try {
+      const fields: Field[] | Error = await FieldService.getFields();
+      return res.status(200).json({data: fields, message: ''});
     } catch (e) {
-      return next(e);
+      return e instanceof Error ? res.status(400).json({error: e.message}) : next(e);
     }
   }
 
   async editField(req: Request, res: Response, next: NextFunction): Promise<Response | void> {
     try {
 
-      return res.send({status: 401, data: null, message: 'an error occurred when creating a user'});
+      return res.send({status: 401, data: null, message: 'не готово'});
     } catch (e) {
       return next(e);
     }
@@ -49,7 +53,7 @@ class FieldController {
   async deleteField(req: Request, res: Response, next: NextFunction): Promise<Response | void> {
     try {
 
-      return res.send({status: 401, data: null, message: 'an error occurred when creating a user'});
+      return res.send({status: 401, data: null, message: 'не готово'});
     } catch (e) {
       return next(e);
     }

@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.get('/users', UserController.getUsers);
 router.post('/users', UserController.createUser);
-router.get('/user/:username', UserController.getUser);
+router.get('/user', UserController.getUser);
 router.put('/users/:username', UserController.editUser);
 router.delete('/users/:id', UserController.deleteUser);
 
@@ -17,8 +17,8 @@ router.delete('/structures/:id', StructuresController.deleteStructure);
 
 router.get('/entities', EntityController.getEntities);
 router.post('/entities', EntityController.createEntity);
-router.get('/entities/:id', EntityController.getEntity);
-router.put('/entities/:id', EntityController.editEntity);
+router.get('/entity', EntityController.getEntity);
+// router.put('/entities/:id', EntityController.editEntity);
 router.delete('/entities/:id', EntityController.deleteEntity);
 
 router.get('/fields', FieldController.getFields);
