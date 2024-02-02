@@ -15,8 +15,12 @@ class UserService {
     return user;
   }
 
-  async getUser(username: string): Promise<User | Error> {
-    const [user] = await sql`SELECT * from Users WHERE username = ${username}`;
+  async getUser(username: string | undefined, id: number | undefined): Promise<User | Error> {
+    let user;
+
+    if (username) [user] = await sql`SELECT * from Users WHERE username = ${username}`;
+    else if (id) [user] = await sql`SELECT * from Users WHERE id = ${id}`;
+
     if (!user) throw new Error("the user not found");
 
     return user as User;
@@ -29,13 +33,14 @@ class UserService {
     return users;
   }
 
-  async editUser(username: string, user: User): Promise<User | Error> {
-    if (!user.username || !user.password) throw new Error("the username or password field is not specified");
+  async editUser(user: User, new_user: User): Promise<User | Error> {
+    // todo: по какому-то одному полю + валидация пользователя (сравнение user.id и id авторизованного)
+    if (!new_user.username || !new_user.password) throw new Error("the username or password field is not specified");
 
     const [edit_user] = await sql`
       UPDATE Users
-      SET username = ${user.username}, password = ${user.password}
-      WHERE username = ${username};
+      SET username = ${new_user.username}, password = ${new_user.password}
+      WHERE username = ${user.username!} OR id = ${user.id!};
     `;
 
     return edit_user as User;

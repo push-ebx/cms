@@ -20,11 +20,11 @@ class UserController {
     }
   }
 
-  async getUser(req: Request, res: Response, next: NextFunction): Promise<Response | void> {
-    const {username} = req.params;
+  async getUser(req: RequestWithUser, res: Response, next: NextFunction): Promise<Response | void> {
+    const {username, id} = req.query;
 
     try {
-      const user: User | Error = await UserService.getUser(username);
+      const user: User | Error = await UserService.getUser(username, +id);
       return res.send({status: 200, data: user, message: ''});
     } catch (e) {
       return e instanceof Error ? res.status(400).json({error: e.message}) : next(e);
@@ -42,15 +42,20 @@ class UserController {
 
   async editUser(req: RequestWithUser, res: Response, next: NextFunction): Promise<Response | void> {
     try {
-      const {username, password} = req.body;
+      const {new_username, new_password} = req.body;
+      const {username, id} = req.query;
 
       const user: User = {
-        username,
-        password,
-        created_on: new Date()
+        username: username,
+        id: id
       };
 
-      const edit_user: User | Error = await UserService.editUser(req.query.username, user);
+      const new_user: User = {
+        username: new_username,
+        password: new_password
+      };
+
+      const edit_user: User | Error = await UserService.editUser(user, new_user);
       return res.status(200).json({data: edit_user, message: ''});
     } catch (e) {
       console.log(e)
@@ -60,6 +65,7 @@ class UserController {
 
   async deleteUser(req: Request, res: Response, next: NextFunction): Promise<Response | void> {
     try {
+      // query: {id, username};
       //todo
       return res.status(401).json({data: null, message: 'an error occurred when creating a user'});
     } catch (e) {

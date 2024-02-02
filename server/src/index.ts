@@ -12,6 +12,7 @@ const app: Express = express();
 const port = process.env.PORT || 5000;
 
 app
+  .use(cors())
   .use((req: RequestWithUser, _: Response, next: NextFunction) => {
     req.query.user = {username: "admin", id: 1};
     next();
@@ -20,7 +21,6 @@ app
   .use(express.json())
   .use(bodyParser.json())
   .use('/api', router)
-  .use(cors())
   .use(requestError);
 
 app.listen(port, () => {

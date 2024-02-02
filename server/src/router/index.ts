@@ -4,10 +4,10 @@ import {UserController, StructuresController, EntityController, FieldController}
 const router = express.Router();
 
 router.get('/users', UserController.getUsers);
-router.post('/users', UserController.createUser);
+router.post('/user', UserController.createUser);
 router.get('/user', UserController.getUser);
-router.put('/users/:username', UserController.editUser);
-router.delete('/users/:id', UserController.deleteUser);
+router.put('/user', UserController.editUser);
+router.delete('/user', UserController.deleteUser);
 
 router.get('/structures', StructuresController.getStructures);
 router.post('/structures', StructuresController.createStructure);
