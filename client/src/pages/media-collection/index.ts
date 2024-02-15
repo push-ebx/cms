@@ -1,0 +1,1 @@
+export { MediaCollectionPage } from "./ui/media-collection-page.tsx";

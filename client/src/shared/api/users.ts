@@ -21,7 +21,7 @@ export const getUser = async ({ username, id }: { username?: string, id?: number
 
 export const createUser = async ({ username, password }: { username: string, password: string }): Promise<User | undefined> => {
   try {
-    const res = await $api.post(`/user`, { body: { username, password } });
+    const res = await $api.post(`/user`, { username, password });
     return res.data;
   } catch (e) {
     throw e;

@@ -1,0 +1,52 @@
+html,
+body,
+#root,
+.app {
+  position: relative;
+  height: 100%;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: calc(16vw / (1440 / 100));
+}
+
+a {
+  text-decoration: none !important;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  width: 100vw;
+  height: 100vh;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  background-color: transparent;
+
+  &-track {
+    background-color: transparent;
+    border-radius: 5px;
+  }
+
+  &-thumb {
+    background-color: #a6b2c3;
+    border-radius: 5px;
+  }
+
+  &-corner {
+    background-color: #ffffff;
+  }
+}
+
+ul {
+  margin: 0 !important;
+  padding: 0 !important;
+}

@@ -1,8 +1,6 @@
 import {NextFunction, Request, Response} from "express";
-import UserService from "../service/user-service";
 import {Entity, RequestWithUser, Structure, User} from "../types";
 import EntityService from "../service/entity-service";
-import StructureService from "../service/structure-service";
 
 class EntityController {
   async createEntity(req: RequestWithUser, res: Response, next: NextFunction): Promise<Response | void> {

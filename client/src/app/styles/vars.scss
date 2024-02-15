@@ -1,0 +1,14 @@
+:root[data-theme="light"] {
+  --background-page-color: #e5e5e5;
+  --auth-form-background-color: #ffffff;
+}
+
+:root[data-theme="dark"] {
+  --background-page-color: #000000;
+  --auth-form-background-color: #000;
+}
+
+$background-page-color: var(--background-page-color);
+$auth-form-background-color: var(--auth-form-background-color);
+
+$font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;

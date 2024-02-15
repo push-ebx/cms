@@ -3,8 +3,10 @@ import UserService from "../service/user-service";
 import {RequestWithUser, User} from "../types";
 
 class UserController {
-  async createUser(req: Request, res: Response, next: NextFunction): Promise<Response | void> {
+  async createUser(req: RequestWithUser, res: Response, next: NextFunction): Promise<Response | void> {
     const {username, password} = req.body;
+    console.log(req.body);
+    console.log(username, password);
 
     const user: User = {
       username,

@@ -1,12 +1,14 @@
 import { useEffect } from "react";
-import { getUsers, getUser } from "@/shared/api/users.ts";
+import "./styles/index.scss";
+import { RouterProvider } from "react-router-dom";
+import { router } from "./providers/RouterProvider.tsx";
 
 export const App = () => {
+  document.documentElement.dataset.theme = 'light';
+
   useEffect(() => {
     (async () => {
       try {
-        const users = await getUser({id: 100});
-        console.log(users);
       } catch (e) {
         console.log(e);
       }
@@ -14,8 +16,6 @@ export const App = () => {
   }, []);
 
   return (
-    <>
-      123
-    </>
+    <RouterProvider router={router} />
   );
 };

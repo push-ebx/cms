@@ -1,0 +1,11 @@
+@import "@/app/styles/vars.scss";
+
+.form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  max-width: 400px;
+  background: $auth-form-background-color;
+  padding: 1rem;
+  border-radius: .5rem;
+}
