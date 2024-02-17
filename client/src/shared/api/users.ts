@@ -10,10 +10,11 @@ export const getUsers = async (): Promise<User[] | undefined> => {
   }
 };
 
-export const getUser = async ({ username, id }: { username?: string, id?: number }): Promise<User | undefined> => {
+export const getUser = async (): Promise<User | undefined> => {
   try {
-    const res = await $api.get(`/user`, { params: { username, id } });
-    return res.data;
+    const res = await $api.get(`/user`, );
+
+    return res.data.data;
   } catch (e) {
     throw e;
   }

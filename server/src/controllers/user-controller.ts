@@ -33,10 +33,8 @@ class UserController {
   }
 
   async getUser(req: RequestWithUser, res: Response, next: NextFunction): Promise<Response | void> {
-    const {username, id} = req.query;
-
     try {
-      const user: User | Error = await UserService.getUser(username, +id);
+      const user: User | Error = await UserService.getUser(req.query.user.id);
       return res.send({status: 200, data: user, message: ''});
     } catch (e) {
       return e instanceof Error ? res.status(400).json({error: e.message}) : next(e);

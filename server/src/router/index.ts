@@ -7,27 +7,27 @@ const router = express.Router();
 router.get('/users', authMiddleware, UserController.getUsers);
 router.post('/user', UserController.createUser);
 router.post('/user/login', UserController.login);
-router.get('/user', UserController.getUser);
-router.put('/user', UserController.editUser);
-router.delete('/user', UserController.deleteUser);
+router.get('/user', authMiddleware, UserController.getUser);
+router.put('/user', authMiddleware, UserController.editUser);
+router.delete('/user', authMiddleware, UserController.deleteUser);
 
-router.get('/structures', StructuresController.getStructures);
-router.post('/structures', StructuresController.createStructure);
-router.get('/structure', StructuresController.getStructure);
-router.put('/structures/:id', StructuresController.editStructure);
-router.delete('/structures/:id', StructuresController.deleteStructure);
+router.get('/structures', authMiddleware, StructuresController.getStructures);
+router.post('/structures', authMiddleware, StructuresController.createStructure);
+router.get('/structure', authMiddleware, StructuresController.getStructure);
+router.put('/structures/:id', authMiddleware, StructuresController.editStructure);
+router.delete('/structures/:id', authMiddleware, StructuresController.deleteStructure);
 
-router.get('/entities', EntityController.getEntities);
-router.post('/entities', EntityController.createEntity);
-router.get('/entity', EntityController.getEntity);
+router.get('/entities', authMiddleware, EntityController.getEntities);
+router.post('/entities', authMiddleware, EntityController.createEntity);
+router.get('/entity', authMiddleware, EntityController.getEntity);
 // router.put('/entities/:id', EntityController.editEntity);
-router.delete('/entities/:id', EntityController.deleteEntity);
+router.delete('/entities/:id', authMiddleware, EntityController.deleteEntity);
 
-router.get('/fields', FieldController.getFields);
-router.post('/fields', FieldController.createField);
-router.get('/fields/:id', FieldController.getField);
-router.put('/fields/:id', FieldController.editField);
-router.delete('/fields/:id', FieldController.deleteField);
+router.get('/fields', authMiddleware, FieldController.getFields);
+router.post('/fields', authMiddleware, FieldController.createField);
+router.get('/fields/:id', authMiddleware, FieldController.getField);
+router.put('/fields/:id', authMiddleware, FieldController.editField);
+router.delete('/fields/:id', authMiddleware, FieldController.deleteField);
 
 router.get('/', (req: Request, res: Response) => res.send({status: 'ok'}));
 

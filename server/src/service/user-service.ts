@@ -14,7 +14,7 @@ class UserService {
 
     const [{ id }] = await sql`INSERT INTO Users ${sql(user, "username", "password", "created_on")} RETURNING id`;
 
-    user.access_token = tokenService.generateToken({ user_id: id });
+    user.access_token = tokenService.generateToken({ id: id });
 
     user.id = id;
     return user;
@@ -31,19 +31,18 @@ class UserService {
       throw new Error('incorrect the password');
     }
 
-    user.access_token = tokenService.generateToken({ user_id: user.id });
+    user.access_token = tokenService.generateToken({ id: user.id });
     delete user.password;
     return user;
   }
 
-  async getUser(username?: string, id?: number): Promise<User | Error> {
+  async getUser(id?: number): Promise<User | Error> {
     let user;
 
-    if (username) [user] = await sql`SELECT * from Users WHERE username = ${username}`;
-    else if (id) [user] = await sql`SELECT * from Users WHERE id = ${id}`;
+    if (id) [user] = await sql`SELECT * from Users WHERE id = ${id}`;
 
     if (!user) throw new Error("the user not found");
-
+    delete user.password;
     return user as User;
   }
 

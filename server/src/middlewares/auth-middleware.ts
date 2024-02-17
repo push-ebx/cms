@@ -25,6 +25,7 @@ export = function(req: RequestWithUser, res: Response, next: NextFunction) {
     }
 
     req.query.user = userData;
+
     next();
   } catch (e) {
     return next(ApiError.UnauthorizedError());
