@@ -1,5 +1,5 @@
 import { $api } from "./config";
-import { User } from "@/shared/model";
+import {  User } from "@/shared/model";
 
 export const getUsers = async (): Promise<User[] | undefined> => {
   try {
@@ -22,6 +22,16 @@ export const getUser = async ({ username, id }: { username?: string, id?: number
 export const createUser = async ({ username, password }: { username: string, password: string }): Promise<User | undefined> => {
   try {
     const res = await $api.post(`/user`, { username, password });
+    return res.data;
+  } catch (e) {
+    throw e;
+  }
+};
+
+export const login = async ({ username, password }: { username: string, password: string }): Promise<User | undefined> => {
+  try {
+    const res = await $api.post(`/user/login`, { username, password });
+    localStorage.setItem("access_token", res.data.access_token);
     return res.data;
   } catch (e) {
     throw e;

@@ -1,10 +1,12 @@
 import express, { Request, Response } from "express";
 import {UserController, StructuresController, EntityController, FieldController} from "../controllers";
+import authMiddleware from "../middlewares/auth-middleware";
 
 const router = express.Router();
 
-router.get('/users', UserController.getUsers);
+router.get('/users', authMiddleware, UserController.getUsers);
 router.post('/user', UserController.createUser);
+router.post('/user/login', UserController.login);
 router.get('/user', UserController.getUser);
 router.put('/user', UserController.editUser);
 router.delete('/user', UserController.deleteUser);

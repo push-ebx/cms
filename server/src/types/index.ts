@@ -5,6 +5,7 @@ export interface User {
   username?: string;
   password?: string;
   created_on?: Date;
+  access_token?: string;
 }
 
 export interface Structure {
@@ -16,6 +17,12 @@ export interface Structure {
 export interface Entity {
   id?: number;
   struct_id: number;
+}
+
+export interface Token {
+  user_id?: number;
+  refresh_token?: string;
+  access_token?: string
 }
 
 export type Types = 'integer' | 'double' | 'text' | 'long text' | 'logical' | 'media' | 'date' | 'time';

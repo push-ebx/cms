@@ -13,10 +13,10 @@ const port = process.env.PORT || 5000;
 
 app
   .use(cors())
-  .use((req: RequestWithUser, _: Response, next: NextFunction) => {
-    req.query.user = {username: "admin", id: 1};
-    next();
-  })
+  // .use((req: RequestWithUser, _: Response, next: NextFunction) => {
+  //   req.query.user = {username: "admin", id: 1};
+  //   next();
+  // })
   .use(requestLogger)
   .use(express.json())
   .use(bodyParser.json())

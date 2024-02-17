@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Input } from "@/shared/ui/input";
-import { createUser } from "@/shared/api/users.ts";
+import { createUser, login } from "@/shared/api/users.ts";
 import { AxiosError } from "axios";
 import styles from "./style.module.scss";
 
@@ -12,7 +12,7 @@ export const LoginForm = () => {
     e.preventDefault();
     try {
       // тут логин
-      const res = await createUser({ username, password });
+      const res = await login({ username, password });
       console.log(res);
     } catch (e: AxiosError | any) {
       console.log(e.response?.data.error);

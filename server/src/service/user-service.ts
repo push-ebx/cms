@@ -1,21 +1,42 @@
-import { User } from "../types";
+import { Token, User } from "../types";
 import sql from "../db";
+import tokenService from "./token-service";
+const bcrypt = require("bcrypt");
 
 class UserService {
   async createUser(user: User): Promise<User | Error> {
-    if (!user.username)  throw new Error("the username field is not specified");
+    if (!user.username) throw new Error("the username field is not specified");
 
     const [res] = await sql`SELECT * from Users WHERE username = ${user.username}`;
 
     if (res) throw new Error("a user with the same username already exists");
+    user.password = await bcrypt.hash(user.password, 3);
 
-    const [{id}] = await sql`INSERT INTO Users ${sql(user, 'username', 'password', 'created_on')} RETURNING id`;
+    const [{ id }] = await sql`INSERT INTO Users ${sql(user, "username", "password", "created_on")} RETURNING id`;
+
+    user.access_token = tokenService.generateToken({ user_id: id });
 
     user.id = id;
     return user;
   }
 
-  async getUser(username: string | undefined, id: number | undefined): Promise<User | Error> {
+  async login({username, password}: User): Promise<Token | User | Error> {
+    if (!username) throw new Error("the username field is not specified");
+
+    const [user]: any = await sql`SELECT * from Users WHERE username = ${username}`;
+
+    const isPassEquals = await bcrypt.compare(password, user.password);
+
+    if (!isPassEquals) {
+      throw new Error('incorrect the password');
+    }
+
+    user.access_token = tokenService.generateToken({ user_id: user.id });
+    delete user.password;
+    return user;
+  }
+
+  async getUser(username?: string, id?: number): Promise<User | Error> {
     let user;
 
     if (username) [user] = await sql`SELECT * from Users WHERE username = ${username}`;

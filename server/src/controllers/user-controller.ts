@@ -1,12 +1,10 @@
 import { NextFunction, Request, Response } from "express";
 import UserService from "../service/user-service";
-import {RequestWithUser, User} from "../types";
+import { RequestWithUser, User } from "../types";
 
 class UserController {
   async createUser(req: RequestWithUser, res: Response, next: NextFunction): Promise<Response | void> {
     const {username, password} = req.body;
-    console.log(req.body);
-    console.log(username, password);
 
     const user: User = {
       username,
@@ -16,9 +14,21 @@ class UserController {
 
     try {
       const new_user: User | Error = await UserService.createUser(user);
+
       return res.status(201).json({data: new_user, message: 'the user has been successfully created'});
     } catch (e) {
       return e instanceof Error ? res.status(400).json({error: e.message}) : next(e);
+    }
+  }
+
+  async login(req: RequestWithUser, res: Response, next: NextFunction) {
+    try {
+      const {username, password} = req.body;
+      const user: User | Error = await UserService.login({ username, password });
+
+      return res.json(user);
+    } catch (e) {
+      next(e);
     }
   }
 

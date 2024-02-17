@@ -7,6 +7,7 @@ export const requestLogger = (req: Request, res: Response, next: NextFunction) =
 };
 
 export const requestError = (err: Error, req: Request, res: Response, next: NextFunction) => {
-  console.error(err.stack);
-  res.status(500).send('Something went wrong');
+  // console.error(err.stack);
+  console.log('Error: ', err.message);
+  res.status(500).send(err.message ?? 'Something went wrong');
 }

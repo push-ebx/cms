@@ -3,6 +3,7 @@ export interface User {
   username?: string;
   password?: string;
   created_on?: Date;
+  access_token?: string;
 }
 
 export interface Structure {
