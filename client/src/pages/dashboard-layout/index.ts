@@ -1,0 +1,1 @@
+export { DashboardLayoutPage } from "./ui/dashboard-layout-page.tsx";

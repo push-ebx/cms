@@ -11,7 +11,7 @@ export const MediaCollectionPage = () => {
 
   return (
     <>
-      main page
+      media
     </>
   );
 };

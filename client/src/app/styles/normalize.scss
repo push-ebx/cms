@@ -8,7 +8,8 @@ body,
 
 html {
   scroll-behavior: smooth;
-  font-size: calc(16vw / (1440 / 100));
+  font-size: 18px;
+  //font-size: calc(16vw / (1440 / 100));
 }
 
 a {
@@ -17,13 +18,12 @@ a {
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-  sans-serif;
+  font-family: var(--font-sans),ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   width: 100vw;
   height: 100vh;
+  position: relative;
 }
 
 ::-webkit-scrollbar {

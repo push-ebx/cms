@@ -1,28 +1,36 @@
 import { createBrowserRouter } from "react-router-dom";
-import { RootPage } from "@/pages/root";
-import { RootLayoutPage } from "@/pages/root-layout";
-import { AuthPage } from "@/pages/auth";
-import { MainPage } from "@/pages/main";
-import { NotFoundPage } from "@/pages/not-found";
+import {
+  RootPage,
+  SettingsPage,
+  DashboardLayoutPage,
+  AuthPage,
+  MainPage,
+  NotFoundPage,
+  ContentRepositoryPage,
+  MediaCollectionPage
+} from "@/pages";
+import { CreatorOfStructurePage } from "@/pages/creator-of-structure/ui/creator-of-structure-page.tsx";
 
 export const router = createBrowserRouter([
   {
     element: <RootPage />,
     children: [
+      { path: "/", element: <MainPage /> },
+      { path: "/auth", element: <AuthPage /> },
       {
-        path: "/",
-        element: <MainPage />,
-      },
-      {
-        element: <RootLayoutPage />,
+        element: <DashboardLayoutPage />,
         children: [
-          { path: "/auth", element: <AuthPage /> },
-        ],
+          { path: "dashboard/content-repository", element: <ContentRepositoryPage /> },
+          { path: "dashboard/creator-of-structure", element: <CreatorOfStructurePage /> },
+          { path: "dashboard/media-collection", element: <MediaCollectionPage /> },
+          { path: "dashboard/settings", element: <SettingsPage /> },
+          { path: "dashboard/*", element: <ContentRepositoryPage /> }
+        ]
       },
       {
         path: "*",
-        element: <NotFoundPage />,
-      },
+        element: <NotFoundPage />
+      }
       // {
       //   path: "/",
       //   element: <Navigate to="/transactions" replace />,
@@ -31,6 +39,6 @@ export const router = createBrowserRouter([
       //   path: "/currencies/:id",
       //   element: <CurrencyOverviewPage />,
       // }
-    ],
-  },
+    ]
+  }
 ]);

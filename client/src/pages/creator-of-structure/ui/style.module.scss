@@ -1,0 +1,61 @@
+@import "@/app/styles/vars.scss";
+
+.main {
+  height: 100vh;
+  padding: $header-height 10rem 0;
+}
+
+.container {
+  padding-top: 2rem;
+  height: 100%;
+  width: 100%;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1.5rem;
+  height: 100%;
+  width: 15rem;
+  //border: 1px solid black;
+
+  h1 {
+    font-size: 1.7rem;
+    font-weight: 700;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+  }
+}
+
+.structs {
+  padding-left: 1.3rem !important;
+  list-style: circle !important;
+  display: flex;
+  flex-direction: column;
+  row-gap: .5rem;
+  align-items: flex-start;
+
+  li {
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+  li::marker {
+    color: $active-link;
+  }
+}
+
+.new_struct {
+  font-weight: 500;
+  color: $active-link;
+  cursor: pointer;
+}
+
+.custom_structs {
+  display: flex;
+  flex-direction: column;
+  row-gap: .7rem;
+}

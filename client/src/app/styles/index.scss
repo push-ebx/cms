@@ -1,6 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @import "./normalize.scss";
 @import './vars.scss';
 
-body {
-  background: $background-page-color;
+* {
+  //transition: background .3s, color .1s;
+}
+
+main {
+  width: 100vw;
+  height: 100vh;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  max-width: 50rem;
+  margin: 0 auto;
 }

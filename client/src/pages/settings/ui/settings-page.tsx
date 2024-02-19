@@ -3,15 +3,9 @@ import { useNavigate } from "react-router-dom";
 
 
 export const SettingsPage = () => {
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    console.log(navigate);
-  }, [navigate]);
-
-  return (
+    return (
     <>
-      main page
+      set
     </>
   );
 };

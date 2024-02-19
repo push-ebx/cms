@@ -11,7 +11,7 @@ export const ContentRepositoryPage = () => {
 
   return (
     <>
-      main page
+      contenet rep
     </>
   );
 };

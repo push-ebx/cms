@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { Input } from "@/shared/ui/input";
 import { login } from "@/shared/api/users.ts";
 import { AxiosError } from "axios";
 import styles from "./style.module.scss";
+import { Button, Link, Input, Tab } from "@nextui-org/react";
 
 export const LoginForm = () => {
   const [username, setUsername] = useState<string>('');
@@ -20,20 +20,6 @@ export const LoginForm = () => {
   }
 
   return (
-    <form className={styles.form}>
-      <Input
-        placeholder={"Имя пользователя"}
-        type={"text"}
-        onChange={setUsername}
-        value={username}
-      />
-      <Input
-        placeholder={"Пароль"}
-        type={"password"}
-        onChange={setPassword}
-        value={password}
-      />
-      <button onClick={handleSubmit}>Войти</button>
-    </form>
+
   );
 };

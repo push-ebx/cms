@@ -1,0 +1,1 @@
+export { ContentRepositoryPage } from "./ui/creator-of-structure-page.tsx";
