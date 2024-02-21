@@ -4,6 +4,7 @@ import styles from "./style.module.scss";
 import { NavLink, useLocation } from "react-router-dom";
 import { clsx } from "clsx";
 import { Link } from "react-router-dom";
+import { Logo } from "@/shared/ui/icons/Logo.tsx";
 
 export const Header = () => {
   const location = useLocation();
@@ -18,7 +19,7 @@ export const Header = () => {
 
   return (
     <header className={styles.header}>
-      <div className={styles.logo}>SwiftCMS</div>
+      <Logo color={"hsl(var(--nextui-foreground) / var(--nextui-foreground-opacity, var(--tw-text-opacity)))"} className={styles.logo}/>
       <nav className={styles.nav}>
         {
           navbar.map(nav => (
