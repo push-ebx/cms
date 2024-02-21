@@ -34,7 +34,7 @@ export const ToggleTheme = () => {
             ],
           })}
         >
-          {isSelected ? <SunIcon/> : <MoonIcon/>}
+          {_ === "light" ? <SunIcon/> : <MoonIcon/>}
         </div>
       </Component>
     </div>

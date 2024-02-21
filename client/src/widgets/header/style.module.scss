@@ -12,6 +12,7 @@
   height: $header-height;
   position: fixed;
   font-weight: 500;
+  gap: 1.5rem;
 }
 
 .logo {
@@ -23,9 +24,11 @@
 
 .nav {
   display: flex;
-  width: 50rem;
+  max-width: 50rem;
+  width: 100%;
   justify-content: space-between;
   align-items: center;
+  gap: 1rem;
 }
 
 .active_nav_link {
