@@ -28,10 +28,20 @@ import sql from './index';
   `
 
   await sql`
+    CREATE TABLE IF NOT EXISTS Types (
+      id serial PRIMARY KEY,
+      struct_id INT NOT NULL,
+      title VARCHAR(255) UNIQUE NOT NULL,
+      type VARCHAR(25) NOT NULL,
+      FOREIGN KEY (struct_id) REFERENCES Structures (id)
+    );
+  `
+
+  // todo: при создании или редактировании провератья title на уникальность
+  await sql`
     CREATE TABLE IF NOT EXISTS Fields (
       id serial PRIMARY KEY,
       entity_id INT NOT NULL,
-      type VARCHAR(25) UNIQUE NOT NULL,
       FOREIGN KEY (entity_id) REFERENCES Entities (id),
       integer INT,
       double NUMERIC,

@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { Theme } from "@/entities/app/model";
+
+export type Theme = "dark" | "light";
 
 export interface AppState {
   theme: Theme;

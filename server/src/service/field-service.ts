@@ -2,13 +2,16 @@ import {Entity, Field, Types} from "../types";
 import sql from "../db";
 
 class FieldService {
+  // todo: лучше addField
   async createField(field: Field): Promise<Field | Error> {
     if (!field.entity_id) throw new Error("the entity_id field is not specified");
     if (!field.type) throw new Error("the type field is not specified");
+    if (!field.title) throw new Error("the type field is not specified");
+    // по type 
 
     // todo проверка на существование
 
-    const [{id}] = await sql`INSERT INTO Fields ${sql(field, 'type', 'entity_id')} RETURNING id`;
+    const [{id}] = await sql`INSERT INTO Fields ${sql(field, 'type', 'entity_id', 'title')} RETURNING id`;
 
     field.id = id;
     return field;
