@@ -2,6 +2,7 @@ import { Chip, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow, 
 import React from "react";
 import { EditIcon } from "@/shared/ui/icons/EditIcon.tsx";
 import { DeleteIcon } from "@/shared/ui/icons/DeleteIcon.tsx";
+import { Type } from "@/shared/model";
 
 const columns = [
   { name: "TITLE", uid: "title" },
@@ -9,38 +10,18 @@ const columns = [
   { name: "ACTIONS", uid: "actions" }
 ];
 
-const users = [
-  {
-    id: 1,
-    title: "Title",
-    type: "Text"
-  },
-  {
-    id: 2,
-    title: "Age",
-    type: "Integer"
-  },
-  {
-    id: 3,
-    title: "Jane Fisher",
-    type: "Senior Developer"
-  },
-  {
-    id: 4,
-    title: "William Howard",
-    type: "Community Manager"
-  },
-  {
-    id: 5,
-    title: "Kristen Copper",
-    type: "Sales Manager"
+export const TypesTable = ({ types }: { types: Type[] }) => {
+  const deleteType = async (type: Type) => {
+    console.log("delete ", type);
   }
-];
 
-export const TypesTable = () => {
+  const editType = async (type: Type) => {
+    console.log("edit ", type);
+  }
+
   // @ts-ignore
-  const renderCell = React.useCallback((user, columnKey) => {
-    const cellValue = user[columnKey];
+  const renderCell = React.useCallback((type, columnKey) => {
+    const cellValue = type[columnKey];
 
     switch (columnKey) {
       case "title":
@@ -60,12 +41,12 @@ export const TypesTable = () => {
           <div className="relative flex items-center gap-2">
             <Tooltip content="Edit user">
               <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
-                <EditIcon />
+                <EditIcon onClick={() => editType(type)} />
               </span>
             </Tooltip>
             <Tooltip color="danger" content="Delete user">
               <span className="text-lg text-danger cursor-pointer active:opacity-50">
-                <DeleteIcon />
+                <DeleteIcon onClick={() => deleteType(type)}/>
               </span>
             </Tooltip>
           </div>
@@ -84,7 +65,7 @@ export const TypesTable = () => {
           </TableColumn>
         )}
       </TableHeader>
-      <TableBody items={users}>
+      <TableBody items={types}>
         {(item) => (
           <TableRow key={item.id}>
             {(columnKey) => <TableCell>{renderCell(item, columnKey)}</TableCell>}

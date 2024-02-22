@@ -12,6 +12,13 @@ class TypeService {
     type.id = id;
     return type;
   }
+
+  async getTypes(): Promise<Type[] | Error> {
+    const types: Type[] = await sql`SELECT * from types`;
+    if (!types) throw new Error("the types not found");
+
+    return types;
+  }
 }
 
 export = new TypeService();

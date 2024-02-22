@@ -10,11 +10,11 @@ export const createType = async ({title, type, struct_id}: Type): Promise<Type |
   }
 };
 
-// export const getStructures = async (): Promise<Structure[] | undefined> => {
-//   try {
-//     const res = await $api.get(`/structures`);
-//     return res.data.data;
-//   } catch (e) {
-//     throw e;
-//   }
-// };
+export const getTypes = async (): Promise<Type[] | undefined> => {
+  try {
+    const res = await $api.get(`/types`);
+    return res.data.data;
+  } catch (e) {
+    throw e;
+  }
+};

@@ -35,7 +35,8 @@ router.get("/fields/:id", authMiddleware, FieldController.getField);
 router.put("/fields/:id", authMiddleware, FieldController.editField);
 router.delete("/fields/:id", authMiddleware, FieldController.deleteField);
 
-router.post("/type", TypesController.createType);
+router.post("/type", authMiddleware, TypesController.createType);
+router.get("/types", authMiddleware, TypesController.getTypes);
 
 router.get("/", (req: Request, res: Response) => res.send({ status: "ok" }));
 

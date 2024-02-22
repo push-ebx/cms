@@ -1,18 +1,11 @@
-import { useEffect } from "react";
 import "./styles/index.scss";
 import { RouterProvider } from "react-router-dom";
 import { router } from "./providers/router-provider.tsx";
-import { getUser } from "@/shared/api/users.ts";
-import { AxiosError } from "axios";
 import { useDarkMode } from "@/shared/lib/useDarkMode.tsx";
 import { clsx } from "clsx";
 
 export const App = () => {
-  const [theme, setTheme] = useDarkMode();
-
-  useEffect(() => {
-    console.log("app:", theme);
-  }, [theme]);
+  const [theme] = useDarkMode();
 
   // useEffect(() => {
   //   (async () => {
