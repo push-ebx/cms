@@ -5,9 +5,12 @@ import EntityService from "../service/entity-service";
 class EntityController {
   async createEntity(req: RequestWithUser, res: Response, next: NextFunction): Promise<Response | void> {
     if (!req.query.user.id) return res.send({status: 400, error: "the user is not logged in"});
+    // { struct_id: struct_id, fields: [{type: "integer", title: "name", ["text"]: "Nikita"}] }
+    const { struct_id, fields } = req.body;
 
     const entity: Entity = {
-      struct_id: req.body.struct_id
+      struct_id,
+      fields
     };
 
     try {
@@ -23,7 +26,8 @@ class EntityController {
     if (!req.query.user.id) return res.send({status: 400, error: "the user is not logged in"});
 
     try {
-      const entities: Entity[] | Error = await EntityService.getEntities();
+      const {struct_id} = req.query;
+      const entities: Entity[] | Error = await EntityService.getEntities(struct_id);
       return res.status(200).json({data: entities, message: ''});
     } catch (e) {
       return e instanceof Error ? res.status(400).json({error: e.message}) : next(e);

@@ -1,0 +1,17 @@
+@import "@/app/styles/vars.scss";
+
+.types {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  //background: red;
+  //max-height: 100vh;
+  //height: auto;
+}
+
+.new {
+  font-weight: 500;
+  color: $active-link;
+  cursor: pointer;
+}

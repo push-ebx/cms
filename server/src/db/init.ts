@@ -42,13 +42,15 @@ import sql from './index';
     CREATE TABLE IF NOT EXISTS Fields (
       id serial PRIMARY KEY,
       entity_id INT NOT NULL,
+      type VARCHAR(25) NOT NULL,
+      title VARCHAR(255) UNIQUE NOT NULL,
       FOREIGN KEY (entity_id) REFERENCES Entities (id),
       integer INT,
       double NUMERIC,
       text VARCHAR(255),
       long_text TEXT,
       boolean BOOLEAN,
-      date DATE NOT NULL
+      date DATE
     );
   `
 

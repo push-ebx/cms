@@ -15,9 +15,10 @@ export interface Structure {
 export interface Entity {
   id?: number;
   struct_id: number;
+  fields: Field[];
 }
 
-export type Types = 'integer' | 'double' | 'text' | 'long text' | 'logical' | 'media' | 'date' | 'time';
+export type Types = 'integer' | 'double' | 'text' | 'long_text' | 'boolean' | 'media' | 'date' | 'time';
 
 export interface Field {
   id?: number;
@@ -28,7 +29,7 @@ export interface Field {
   double?: number;
   text?: string;
   long_text?: string;
-  logical?: boolean;
+  boolean?: boolean;
   media?: string;
   date?: Date;
   time?: string;
@@ -36,7 +37,38 @@ export interface Field {
 
 export interface Type {
   id?: number;
-  struct_id: number;
-  type: string;
+  struct_id?: number;
+  type: Types;
   title: string;
 }
+
+export const types: Type[] = [
+  {
+    type: "integer",
+    title: "Целочисленный"
+  },
+  {
+    type: "double",
+    title: "Число с плавающей точкой"
+  },
+  {
+    type: "text",
+    title: "Текст"
+  },
+  {
+    type: "long_text",
+    title: "Длинный текст"
+  },
+  {
+    type: "boolean",
+    title: "Логический"
+  },
+  {
+    type: "date",
+    title: "Дата"
+  },
+  {
+    type: "time",
+    title: "Время"
+  }
+];

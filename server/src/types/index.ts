@@ -16,7 +16,9 @@ export interface Structure {
 
 export interface Entity {
   id?: number;
+  entity_id?: number;
   struct_id: number;
+  fields: Field[];
 }
 
 export interface Token {
@@ -25,7 +27,7 @@ export interface Token {
   access_token?: string
 }
 
-export type Types = 'integer' | 'double' | 'text' | 'long text' | 'logical' | 'media' | 'date' | 'time';
+export type Types = 'integer' | 'double' | 'text' | 'long_text' | 'boolean' | 'media' | 'date' | 'time';
 
 export interface Field {
   id?: number;
@@ -36,7 +38,7 @@ export interface Field {
   double?: number;
   text?: string;
   long_text?: string;
-  logical?: boolean;
+  boolean?: boolean;
   media?: string;
   date?: Date;
   time?: string;

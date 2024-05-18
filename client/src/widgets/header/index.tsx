@@ -33,7 +33,7 @@ export const Header = () => {
           ))
         }
       </nav>
-      <ToggleTheme />
+      {/*<ToggleTheme />*/}
     </header>
   );
 };

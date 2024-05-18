@@ -1,10 +1,9 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, Navigate } from "react-router-dom";
 import {
   RootPage,
   SettingsPage,
   DashboardLayoutPage,
   AuthPage,
-  MainPage,
   NotFoundPage,
   ContentRepositoryPage,
   MediaCollectionPage
@@ -15,7 +14,8 @@ export const router = createBrowserRouter([
   {
     element: <RootPage />,
     children: [
-      { path: "/", element: <MainPage /> },
+      // { path: "/", element: <MainPage /> },
+      { path: "/", element: <Navigate to="/dashboard/" replace /> },
       { path: "/auth", element: <AuthPage /> },
       {
         element: <DashboardLayoutPage />,

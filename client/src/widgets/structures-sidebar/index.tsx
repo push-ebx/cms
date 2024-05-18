@@ -6,14 +6,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/app/store";
 import { NewStructModal } from "@/features/new-struct-modal";
 
-export const StructuresSidebar = () => {
+export const StructuresSidebar = ({ title = "Сreator of structures", createNew = true }: {
+  title?: string,
+  createNew?: boolean
+}) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const dispatch = useDispatch();
   const structures = useSelector((state: RootState) => state.structureReducer.structures);
 
   return (
     <nav className={styles.sidebar}>
-      <h1>Сreator of structures</h1>
+      <h1>{title}</h1>
       <Input
         type="search"
         size={"sm"}
@@ -27,7 +30,7 @@ export const StructuresSidebar = () => {
       />
 
       <h2>Custom structures</h2>
-      <span onClick={onOpen} className={styles.new}>+ Create new</span>
+      { createNew ? <span onClick={onOpen} className={styles.new}>+ Create new</span> : "" }
 
       <div className={styles.custom_structs}>
         <ul className={styles.structs}>
