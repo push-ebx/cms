@@ -1,5 +1,5 @@
 import { $api } from "./config";
-import { Entity, Structure } from "@/shared/model";
+import { Entity } from "@/shared/model";
 
 export const createEntity = async ({ struct_id, fields }: Entity): Promise<Entity | undefined> => {
   try {

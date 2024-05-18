@@ -1,8 +1,5 @@
-import { useEffect, useState } from "react";
-import { Button, Input, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader } from "@nextui-org/react";
-import { useDispatch } from "react-redux";
-import { createType } from "@/shared/api/types.ts";
-import { addType } from "@/entities/type/type-slice.ts";
+import { useState } from "react";
+import { Button, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader } from "@nextui-org/react";
 import { Type } from "@/shared/model";
 import { createEntity } from "@/shared/api/entities.ts";
 import { DefineInput } from "@/shared/ui/define-input";
@@ -13,7 +10,7 @@ export const NewEntityModal = ({ types, isOpen, onClose, struct_id }: {
   onClose: () => void,
   struct_id: number
 }) => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const [fieldValues, setFieldValues] = useState({});
 
   return (
@@ -37,17 +34,17 @@ export const NewEntityModal = ({ types, isOpen, onClose, struct_id }: {
             </ModalBody>
             <ModalFooter>
               <Button color="primary" onPress={async () => {
-
                 const fields = types.map(type => ({
                   type: type.type,
                   title: type.title,
+                  // @ts-ignore
                   [type.type]: fieldValues[type.title]
                 }))
                 console.log(fields);
                 // console.log(fieldValues)
-                const res = await createEntity({struct_id, fields});
+                await createEntity({struct_id, fields});
                 // console.log(res);
-                res && dispatch(addType(res));
+                // res && dispatch(addType(res));
                 onClose();
               }}>
                 Создать

@@ -8,7 +8,7 @@ type Props = {
   type: Type
 }
 
-export const DefineInput = ({ placeholder, onChange, value, type }: Props) => {
+export const DefineInput = ({ placeholder, onChange, type }: Props) => {
   return (
     <>
       {

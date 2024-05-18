@@ -1,14 +1,9 @@
-import { ToggleTheme } from "@/features/toggle-theme";
+// import { ToggleTheme } from "@/features/toggle-theme";
 import styles from "./style.module.scss";
-// import { Link } from "@nextui-org/react";
-import { NavLink, useLocation } from "react-router-dom";
-import { clsx } from "clsx";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { Logo } from "@/shared/ui/icons/Logo.tsx";
 
 export const Header = () => {
-  const location = useLocation();
-
   const navbar = [
     { title: "Создание структур", route: "/dashboard/creator-of-structure" },
     { title: "Сущности", route: "/dashboard/content-repository" },
