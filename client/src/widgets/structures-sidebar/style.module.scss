@@ -27,6 +27,10 @@
     cursor: pointer;
   }
 
+  .active_struct {
+    color: $active-link;
+  }
+
   li::marker {
     color: $active-link;
   }

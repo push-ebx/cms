@@ -5,6 +5,8 @@ import { setCurrentStructure } from "@/entities/structure/structure-slice.ts";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/app/store";
 import { NewStructModal } from "@/features/new-struct-modal";
+import { clsx } from "clsx";
+import { useState } from "react";
 
 export const StructuresSidebar = ({ title = "Сreator of structures", createNew = true }: {
   title?: string,
@@ -13,6 +15,12 @@ export const StructuresSidebar = ({ title = "Сreator of structures", createNew 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const dispatch = useDispatch();
   const structures = useSelector((state: RootState) => state.structureReducer.structures);
+  const currentStructure = useSelector((state: RootState) => state.structureReducer.currentStructure);
+  const [search, setSearch] = useState('');
+
+  const filteredStructures = structures.filter(structure =>
+    structure.title.toLowerCase().includes(search.toLowerCase())
+  );
 
   return (
     <nav className={styles.sidebar}>
@@ -25,8 +33,7 @@ export const StructuresSidebar = ({ title = "Сreator of structures", createNew 
           <SearchIcon />
         }
         variant="bordered"
-        onValueChange={() => {
-        }}
+        onValueChange={setSearch}
       />
 
       <h2>Custom structures</h2>
@@ -36,8 +43,9 @@ export const StructuresSidebar = ({ title = "Сreator of structures", createNew 
         <ul className={styles.structs}>
           {
             structures?.length ?
-              structures.map(structure => (
+              filteredStructures.map(structure => (
                   <li
+                    className={clsx(structure.id === currentStructure?.id && styles.active_struct)}
                     key={structure.id}
                     onClick={() => {
                       structure.id && dispatch(setCurrentStructure({ struct_id: structure.id }));
@@ -46,7 +54,7 @@ export const StructuresSidebar = ({ title = "Сreator of structures", createNew 
                     {structure.title}
                   </li>
                 )
-              ) : ""
+              ) : "Структуры не найдены"
           }
         </ul>
       </div>
