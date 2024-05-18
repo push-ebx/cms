@@ -15,7 +15,7 @@ export const StructuresTypes = () => {
       {currentStructure?.id ?
         <>
           <h1>{currentStructure.title}</h1>
-          <span className={styles.new} onClick={onOpen}>+ Add new type</span>
+          <span className={styles.new} onClick={onOpen}>+ Добавить новый тип</span>
           <TypesTable types={types.filter(type => type.struct_id === currentStructure.id)}/>
           <NewTypeModal isOpen={isOpen} onClose={onClose} struct_id={currentStructure.id} />
         </>

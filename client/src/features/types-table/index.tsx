@@ -5,9 +5,9 @@ import { DeleteIcon } from "@/shared/ui/icons/DeleteIcon.tsx";
 import { Type } from "@/shared/model";
 
 const columns = [
-  { name: "TITLE", uid: "title" },
-  { name: "TYPE", uid: "type" },
-  { name: "ACTIONS", uid: "actions" }
+  { name: "Название", uid: "title" },
+  { name: "Тип", uid: "type" },
+  { name: "Действия", uid: "actions" }
 ];
 
 export const TypesTable = ({ types }: { types: Type[] }) => {

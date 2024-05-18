@@ -34,7 +34,7 @@ export const ContentRepositoryPage = () => {
   return (
     <div className={clsx(styles.main, "")}>
       <div className={styles.container}>
-        <StructuresSidebar title={"Content manager"} createNew={false}/>
+        <StructuresSidebar title={"Сущности"} createNew={false}/>
         <EntityList />
       </div>
     </div>

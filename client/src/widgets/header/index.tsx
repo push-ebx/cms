@@ -10,11 +10,11 @@ export const Header = () => {
   const location = useLocation();
 
   const navbar = [
-    { title: "Сreator of structures", route: "/dashboard/creator-of-structure" },
-    { title: "Content Manager", route: "/dashboard/content-repository" },
+    { title: "Создание структур", route: "/dashboard/creator-of-structure" },
+    { title: "Сущности", route: "/dashboard/content-repository" },
     // { title: "Media collection", route: "/dashboard/media-collection" },
-    { title: "REST API", route: "/dashboard/rest-api" },
-    { title: "Settings", route: "/dashboard/settings" }
+    { title: "Маршруты", route: "/dashboard/rest-api" },
+    { title: "Настройки", route: "/dashboard/settings" }
   ];
 
   return (

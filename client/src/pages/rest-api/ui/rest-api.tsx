@@ -36,7 +36,7 @@ export const RestApi = () => {
   return (
     <div className={clsx(styles.main, "")}>
       <div className={styles.container}>
-        <StructuresSidebar title={"REST API"} createNew={false}/>
+        <StructuresSidebar title={"Маршруты"} createNew={false}/>
         {
           currentStructure ?
             <ul>

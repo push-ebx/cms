@@ -23,7 +23,7 @@ export const EntityList = () => {
       {currentStructure?.id ?
         <>
           <h1>{currentStructure.title}</h1>
-          <span className={styles.new} onClick={onOpen}>+ Add new entity</span>
+          <span className={styles.new} onClick={onOpen}>+ Добавить новую сущность</span>
           <EntitiesTable entities={entities}/>
           <NewEntityModal
             types={types.filter(type => type.struct_id === currentStructure.id)}
