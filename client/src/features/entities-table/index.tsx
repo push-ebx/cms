@@ -1,5 +1,4 @@
-import { Chip, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from "@nextui-org/react";
-import React from "react";
+import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from "@nextui-org/react";
 // import { EditIcon } from "@/shared/ui/icons/EditIcon.tsx";
 // import { DeleteIcon } from "@/shared/ui/icons/DeleteIcon.tsx";
 
