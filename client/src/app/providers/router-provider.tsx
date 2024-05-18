@@ -9,6 +9,7 @@ import {
   MediaCollectionPage
 } from "@/pages";
 import { CreatorOfStructurePage } from "@/pages/creator-of-structure/ui/creator-of-structure-page.tsx";
+import { RestApi } from "@/pages/rest-api";
 
 export const router = createBrowserRouter([
   {
@@ -23,6 +24,7 @@ export const router = createBrowserRouter([
           { path: "dashboard/content-repository", element: <ContentRepositoryPage /> },
           { path: "dashboard/creator-of-structure", element: <CreatorOfStructurePage /> },
           { path: "dashboard/media-collection", element: <MediaCollectionPage /> },
+          { path: "dashboard/rest-api", element: <RestApi /> },
           { path: "dashboard/settings", element: <SettingsPage /> },
           { path: "dashboard/*", element: <ContentRepositoryPage /> }
         ]

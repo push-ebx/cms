@@ -46,7 +46,10 @@ class EntityService {
 
       for (let j = 0; j < count_fields_in_entity; j++) {
         // @ts-ignore
-        entities_by_group[entities_by_group.length - 1].push(entities[i * count_fields_in_entity + j]);
+        entities_by_group[entities_by_group.length - 1].push(Object.fromEntries(
+          Object.entries(entities[i * count_fields_in_entity + j])
+            .filter(([_, v]) => v != null)
+        ));
       }
     }
 

@@ -12,7 +12,7 @@ export const Header = () => {
   const navbar = [
     { title: "Сreator of structures", route: "/dashboard/creator-of-structure" },
     { title: "Content Manager", route: "/dashboard/content-repository" },
-    { title: "Media collection", route: "/dashboard/media-collection" },
+    // { title: "Media collection", route: "/dashboard/media-collection" },
     { title: "REST API", route: "/dashboard/rest-api" },
     { title: "Settings", route: "/dashboard/settings" }
   ];

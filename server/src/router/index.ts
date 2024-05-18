@@ -24,7 +24,7 @@ router.put("/structures/:id", authMiddleware, StructuresController.editStructure
 router.delete("/structures/:id", authMiddleware, StructuresController.deleteStructure);
 
 router.post("/entity", authMiddleware, EntityController.createEntity);
-router.get("/entities", authMiddleware, EntityController.getEntities);
+router.get("/entities", EntityController.getEntities); // !!!!!
 router.get("/entity", authMiddleware, EntityController.getEntity);
 // router.put('/entities/:id', EntityController.editEntity);
 router.delete("/entities/:id", authMiddleware, EntityController.deleteEntity);

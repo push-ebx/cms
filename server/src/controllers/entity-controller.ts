@@ -23,8 +23,8 @@ class EntityController {
   }
 
   async getEntities(req: RequestWithUser, res: Response, next: NextFunction): Promise<Response | void> {
-    if (!req.query.user.id) return res.send({status: 400, error: "the user is not logged in"});
-
+    // if (!req.query.user.id) return res.send({status: 400, error: "the user is not logged in"});
+    console.log(req.query);
     try {
       const {struct_id} = req.query;
       const entities: Entity[] | Error = await EntityService.getEntities(struct_id);
